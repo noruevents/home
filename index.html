@@ -73,18 +73,6 @@
     text-align: center; padding: 2rem;
     position: relative; overflow: hidden;
   }
-  .hero-circles {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    pointer-events: none;
-  }
-  .hero-circles span {
-    position: absolute; border-radius: 50%;
-    border: 1px solid rgba(201,185,154,0.12);
-  }
-  .c1 { width: 50vw; height: 50vw; }
-  .c2 { width: 75vw; height: 75vw; }
-  .c3 { width: 100vw; height: 100vw; }
   .hero-eyebrow {
     font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
     color: var(--light); margin-bottom: 2rem;
@@ -208,21 +196,6 @@
     margin-bottom: 1.8rem;
     overflow: hidden;
   }
-  .product-img-placeholder { text-align: center; }
-  .product-img-dot {
-    width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid rgba(201,185,154,0.25);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 0.5rem;
-  }
-  .product-img-dot-inner {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: rgba(201,185,154,0.3);
-  }
-  .product-img-label {
-    font-size: 0.55rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: rgba(255,255,255,0.18);
-  }
   .product-tag {
     display: inline-block;
     font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
@@ -247,6 +220,184 @@
     content: ''; display: block;
     width: 1.1rem; height: 1px; background: var(--accent); flex-shrink: 0;
   }
+
+  /* ════════════════════════════════════════
+     PRICING SECTION
+  ════════════════════════════════════════ */
+  #pricing {
+    background: var(--dark);
+    padding: 0 4rem 7rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .pricing-divider {
+    display: flex; align-items: center; gap: 2rem;
+    margin-bottom: 4rem; padding-top: 5rem;
+  }
+  .pricing-divider-line { flex: 1; height: 1px; background: rgba(201,185,154,0.15); }
+  .pricing-divider-text {
+    font-size: 0.6rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: rgba(201,185,154,0.5);
+    white-space: nowrap;
+  }
+
+  /* Tab switcher */
+  .pricing-tabs {
+    display: flex; gap: 0; margin-bottom: 3rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    width: fit-content;
+  }
+  .pricing-tab {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.85rem 2rem; background: none; border: none;
+    color: rgba(255,255,255,0.3); cursor: pointer;
+    transition: all 0.3s; position: relative;
+  }
+  .pricing-tab + .pricing-tab { border-left: 1px solid rgba(255,255,255,0.08); }
+  .pricing-tab.active {
+    background: rgba(201,185,154,0.1);
+    color: var(--accent);
+  }
+  .pricing-tab:hover:not(.active) { color: rgba(255,255,255,0.6); }
+
+  /* Tier cards grid */
+  .pricing-panel { display: none; }
+  .pricing-panel.active { display: block; }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 1px;
+  }
+  .tier-card {
+    background: var(--dark);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .tier-card:hover { background: rgba(255,255,255,0.03); }
+  .tier-card.featured {
+    background: rgba(201,185,154,0.06);
+  }
+  .tier-card.featured:hover { background: rgba(201,185,154,0.09); }
+  .tier-popular {
+    font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.2rem; display: block;
+  }
+  .tier-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .tier-duration {
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.28);
+    margin-bottom: 1.8rem;
+  }
+  .tier-price-row { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 2rem; }
+  .tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 400; color: var(--cream);
+  }
+  .tier-price-note {
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.28);
+  }
+  .tier-rule { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 1.8rem; }
+  .tier-includes {
+    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.22); margin-bottom: 1rem; display: block;
+  }
+  .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .tier-features li {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    font-size: 0.78rem; font-weight: 300; line-height: 1.5;
+    color: rgba(255,255,255,0.45);
+  }
+  .tier-features li::before {
+    content: ''; display: block; flex-shrink: 0;
+    width: 1rem; height: 1px; background: var(--accent);
+    margin-top: 0.55rem;
+  }
+  .tier-badge {
+    display: inline-block;
+    font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(201,185,154,0.7); border: 1px solid rgba(201,185,154,0.2);
+    padding: 0.22rem 0.65rem; margin-bottom: 0.6rem;
+  }
+
+  /* Self-serve note */
+  .self-serve-note {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; gap: 1.2rem;
+    margin-bottom: 3.5rem;
+  }
+  .self-serve-note-line { width: 1.5rem; height: 1px; background: var(--accent); flex-shrink: 0; }
+  .self-serve-note-text {
+    font-size: 0.72rem; font-weight: 300; line-height: 1.6;
+    color: rgba(255,255,255,0.3);
+  }
+  .self-serve-note-text em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; color: rgba(201,185,154,0.6); font-size: 0.85rem;
+  }
+
+  /* Add-ons */
+  .addons-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.5rem; margin-top: 4rem;
+  }
+  .addons-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: rgba(255,255,255,0.28); margin-bottom: 2rem;
+  }
+  .addons-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+  .addon-item {
+    background: var(--dark);
+    padding: 1.2rem 1.8rem;
+    display: flex; align-items: center;
+    gap: 0.9rem; transition: background 0.3s;
+  }
+  .addon-item:hover { background: rgba(255,255,255,0.03); }
+  .addon-item-dot {
+    width: 1rem; height: 1px; background: var(--accent); flex-shrink: 0;
+  }
+  .addon-name {
+    font-size: 0.78rem; font-weight: 300;
+    color: rgba(255,255,255,0.5); line-height: 1.4;
+  }
+  .pricing-book-cta {
+    margin-top: 4rem;
+    border: 1px solid rgba(201,185,154,0.2);
+    padding: 3rem 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .pricing-book-left {}
+  .pricing-book-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 400;
+    color: var(--cream); margin-bottom: 0.5rem;
+  }
+  .pricing-book-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic;
+    color: rgba(255,255,255,0.35); line-height: 1.7;
+  }
+  .pricing-book-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    background: var(--accent); color: var(--dark);
+    border: none; padding: 1rem 2.2rem; cursor: pointer;
+    transition: opacity 0.3s; white-space: nowrap; flex-shrink: 0;
+  }
+  .pricing-book-btn:hover { opacity: 0.85; }
 
   /* ── Experience ── */
   #experience .exp-header {
@@ -342,8 +493,6 @@
   .form-group textarea:focus { border-bottom-color: var(--dark); }
   .form-group textarea { resize: none; min-height: 5rem; }
   .form-group select option { background: var(--cream); }
-
-  /* ── Field validation states ── */
   .form-group input.invalid { border-bottom-color: var(--error) !important; }
   .form-group input.valid   { border-bottom-color: var(--valid) !important; }
   .field-error {
@@ -354,8 +503,6 @@
     display: block;
   }
   .field-error.visible { opacity: 1; max-height: 2rem; }
-
-  /* ── Submit ── */
   .form-submit {
     width: 100%; padding: 1rem;
     background: var(--dark); color: var(--cream);
@@ -426,37 +573,38 @@
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
     section { padding: 5rem 1.5rem; }
+    #pricing { padding: 0 1.5rem 5rem; }
     #about .inner,
     #contact .inner { grid-template-columns: 1fr; gap: 3rem; }
     .products-grid,
-    .features-grid { grid-template-columns: 1fr; }
+    .features-grid,
+    .pricing-grid,
+    .addons-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     #experience .exp-header { flex-direction: column; align-items: flex-start; }
     footer { flex-direction: column; gap: 1.2rem; text-align: center; }
     #sticky-cta { bottom: 1.2rem; right: 1.2rem; }
+    .pricing-tabs { width: 100%; }
+    .pricing-tab { flex: 1; text-align: center; padding: 0.85rem 1rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<!-- NAV -->
 <nav>
   <div class="nav-logo">NORU Events</div>
   <ul class="nav-links">
     <li><a href="#hero">Home</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-btn" id="nav-quote-btn">Get a Quote</button>
 </nav>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-circles">
-    <span class="c1"></span>
-    <span class="c2"></span>
-    <span class="c3"></span>
-  </div>
   <p class="hero-eyebrow">Luxury Photobooth Experiences</p>
   <h1 class="hero-noru">NORU</h1>
   <div class="hero-events">Events</div>
@@ -472,7 +620,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<!-- ABOUT -->
 <section id="about" style="background: #F5F2EC; padding: 100px 40px; display: flex; flex-direction: column; align-items: center; font-family: 'Jost', sans-serif;">
   <div style="max-width: 680px; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
     <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 36px;">
@@ -487,7 +635,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ PRODUCTS ═══════════════════════════════ -->
+<!-- PRODUCTS -->
 <section id="products">
   <div class="container">
     <div class="reveal">
@@ -496,7 +644,6 @@
       <p class="products-sub">We invest in the best equipment so your memories are flawless every time.</p>
     </div>
     <div class="products-grid">
-
       <div class="product-card reveal">
         <div class="product-img">
           <img src="images/Salsa1Digital.png" alt="Salsa 1 Open Air Photobooth Digital" style="width:100%; height:auto; display:block;">
@@ -512,7 +659,6 @@
           <li>Private online gallery for all guests</li>
         </ul>
       </div>
-
       <div class="product-card reveal">
         <div class="product-img">
           <img src="images/Salsa1withPrinter.png" alt="Salsa 1 Open Air Photobooth with DNP Printer" style="width:100%; height:auto; display:block;">
@@ -529,12 +675,210 @@
           <li>Digital delivery included</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+
+    <div class="pricing-divider reveal">
+      <div class="pricing-divider-line"></div>
+      <span class="pricing-divider-text">Packages &amp; Pricing</span>
+      <div class="pricing-divider-line"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="pricing-tabs" role="tablist">
+        <button class="pricing-tab active" onclick="switchPricing('digital', event)" role="tab">Digital Only</button>
+        <button class="pricing-tab" onclick="switchPricing('prints', event)" role="tab">With Prints</button>
+      </div>
+    </div>
+
+    <!-- DIGITAL PANEL -->
+    <div class="pricing-panel active" id="panel-digital">
+
+      <div class="self-serve-note reveal">
+        <div class="self-serve-note-line"></div>
+        <p class="self-serve-note-text">Digital packages operate <em>self-serve</em> — our team handles full setup and breakdown. An on-site attendant can be added to any prints package.</p>
+      </div>
+
+      <div class="pricing-grid reveal">
+
+        <div class="tier-card">
+          <p class="tier-name">Essential</p>
+          <p class="tier-duration">2 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$400</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>2 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Unlimited digital captures</li>
+            <li>Custom digital overlay</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Standard prop table</li>
+          </ul>
+        </div>
+
+        <div class="tier-card featured">
+          <span class="tier-popular">Most Popular</span>
+          <p class="tier-name">Classic</p>
+          <p class="tier-duration">3 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$500</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>3 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Unlimited digital captures</li>
+            <li>Custom digital overlay</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Prop table</li>
+          </ul>
+        </div>
+
+        <div class="tier-card">
+          <p class="tier-name">Premium</p>
+          <p class="tier-duration">4 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$600</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>4 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Unlimited digital captures</li>
+            <li>Custom digital overlay</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Premium prop table</li>
+            <li>Idle hour included</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRINTS PANEL -->
+    <div class="pricing-panel" id="panel-prints">
+
+      <div class="self-serve-note reveal">
+        <div class="self-serve-note-line"></div>
+        <p class="self-serve-note-text">All prints packages include a <em>dedicated on-site attendant</em> for the full duration of your event. Upgrade to 4×6 prints for $25 per booked hour.</p>
+      </div>
+
+      <div class="pricing-grid reveal">
+
+        <div class="tier-card">
+          <span class="tier-badge">2×6 Strips Included</span>
+          <p class="tier-name">Essential</p>
+          <p class="tier-duration">2 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$550</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>2 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Up to 2 strips per session</li>
+            <li>Custom digital overlay</li>
+            <li>Custom print template</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Prop table</li>
+            <li>1 attendant on-site</li>
+          </ul>
+        </div>
+
+        <div class="tier-card featured">
+          <span class="tier-popular">Most Popular</span>
+          <span class="tier-badge">2×6 Strips Included</span>
+          <p class="tier-name">Classic</p>
+          <p class="tier-duration">3 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$675</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>3 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Up to 2 strips per session</li>
+            <li>Custom digital overlay</li>
+            <li>Custom print template</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Prop table</li>
+            <li>1 attendant on-site</li>
+          </ul>
+        </div>
+
+        <div class="tier-card">
+          <span class="tier-badge">2×6 Strips Included</span>
+          <p class="tier-name">Premium</p>
+          <p class="tier-duration">4 Hours</p>
+          <div class="tier-price-row">
+            <span class="tier-price">$800</span>
+            <span class="tier-price-note">flat rate</span>
+          </div>
+          <div class="tier-rule"></div>
+          <span class="tier-includes">What's included</span>
+          <ul class="tier-features">
+            <li>4 hours of coverage</li>
+            <li>Classic backdrop of your choice</li>
+            <li>Up to 2 strips per session</li>
+            <li>Custom digital overlay</li>
+            <li>Custom print template</li>
+            <li>Instant share via QR / text</li>
+            <li>Online gallery — 180 days</li>
+            <li>Premium prop table</li>
+            <li>1 attendant on-site</li>
+            <li>Idle hour included</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ADD-ONS -->
+    <div class="reveal">
+      <h3 class="addons-heading">Elevate Your Experience</h3>
+      <p class="addons-sub">Customize your package with these optional additions.</p>
+      <div class="addons-grid">
+        <div class="addon-item"><div class="addon-item-dot"></div><span class="addon-name">Extra hour</span></div>
+        <div class="addon-item"><div class="addon-item-dot"></div><span class="addon-name">4×6 print upgrade</span></div>
+        <div class="addon-item"><div class="addon-item-dot"></div><span class="addon-name">Flower wall backdrop upgrade</span></div>
+        <div class="addon-item"><div class="addon-item-dot"></div><span class="addon-name">Video guestbook</span></div>
+      </div>
+
+      <div class="pricing-book-cta reveal">
+        <div class="pricing-book-left">
+          <h3 class="pricing-book-heading">Ready to book your experience?</h3>
+          <p class="pricing-book-sub">Fill out our inquiry form and we'll tailor the perfect package for your event.</p>
+        </div>
+        <button class="pricing-book-btn" id="pricing-book-btn">Fill Out the Form</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="exp-header">
@@ -569,12 +913,10 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="inner">
-
-      <!-- Left info -->
       <div class="reveal from-left">
         <span class="section-label">Book Your Experience</span>
         <h2 class="section-heading">Let's make your event unforgettable</h2>
@@ -582,7 +924,7 @@
         <div class="contact-details">
           <div>
             <span class="detail-label">Email</span>
-            <span class="detail-val">NoruEvents@gmail.com</span>
+            <span class="detail-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="efa1809d9aaa998a819b9caf88828e8683c18c8082">[email&#160;protected]</a></span>
           </div>
           <div>
             <span class="detail-label">Service Area</span>
@@ -590,14 +932,10 @@
           </div>
         </div>
       </div>
-
-      <!-- Right form -->
       <div class="reveal from-right">
         <div class="form-card">
           <h3 class="form-title">Request a Quote</h3>
-
           <form id="quote-form" novalidate>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="f-name">Your Name</label>
@@ -609,7 +947,6 @@
                 <span class="field-error" id="email-error">Please enter a valid email address.</span>
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="f-phone">Phone Number</label>
@@ -621,7 +958,6 @@
                 <input type="date" name="date" id="f-date" required>
               </div>
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="f-type">Event Type</label>
@@ -636,36 +972,27 @@
                 </select>
               </div>
             </div>
-
             <div class="form-group">
               <label for="f-msg">Tell Us About Your Event</label>
               <textarea name="message" id="f-msg" rows="4" placeholder="Expected guest count, venue, package you're considering, any special requests..." required></textarea>
             </div>
-
-            <!-- Spam honeypot -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
             <button type="submit" class="form-submit" id="submit-btn">Get a Quote</button>
-
             <p id="form-error" style="display:none; color:var(--error); font-size:0.78rem; margin-top:0.8rem; letter-spacing:0.05em;">
-              Something went wrong. Please try again or email us directly at NoruEvents@gmail.com.
+              Something went wrong. Please try again or email us directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93ddfce1e6d6e5f6fde7e0d3f4fef2faffbdf0fcfe">[email&#160;protected]</a>.
             </p>
           </form>
-
-          <!-- Success state -->
           <div class="form-success" id="form-success">
             <div class="success-mark">✦</div>
             <p class="success-msg">Thank you! We'll be in touch within 24 hours to discuss your perfect experience.</p>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
     NORU
@@ -674,25 +1001,32 @@
   <p class="footer-copy">&copy; 2025 Noru Events. All rights reserved.</p>
 </footer>
 
-<!-- ═══════════════════════════════ STICKY CTA ═══════════════════════════════ -->
+<!-- STICKY CTA -->
 <button id="sticky-cta">Get a Quote</button>
 
-<!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function () {
 
-  /* ── Smooth scroll helper ── */
+  /* Pricing tab switcher */
+  window.switchPricing = function(tab, e) {
+    document.querySelectorAll('.pricing-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.pricing-panel').forEach(function(p) { p.classList.remove('active'); });
+    e.target.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  };
+
+  /* Smooth scroll */
   function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
   }
 
-  /* ── Nav / hero / sticky button listeners ── */
   document.getElementById('nav-quote-btn').addEventListener('click', function () { scrollToSection('contact'); });
+  document.getElementById('pricing-book-btn').addEventListener('click', function () { scrollToSection('contact'); });
   document.getElementById('hero-quote-btn').addEventListener('click', function () { scrollToSection('contact'); });
   document.getElementById('hero-products-btn').addEventListener('click', function () { scrollToSection('products'); });
   document.getElementById('sticky-cta').addEventListener('click', function () { scrollToSection('contact'); });
 
-  /* ── Sticky CTA visibility ── */
+  /* Sticky CTA */
   var stickyCta = document.getElementById('sticky-cta');
   window.addEventListener('scroll', function () {
     var contact     = document.getElementById('contact');
@@ -705,7 +1039,7 @@
     }
   }, { passive: true });
 
-  /* ── Scroll reveal ── */
+  /* Scroll reveal */
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) e.target.classList.add('visible');
@@ -713,9 +1047,7 @@
   }, { threshold: 0.1, rootMargin: '-60px' });
   document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
 
-  /* ════════════════════════════════════════
-     FORM: Phone mask + validation
-  ════════════════════════════════════════ */
+  /* Phone mask */
   var form      = document.getElementById('quote-form');
   var submitBtn = document.getElementById('submit-btn');
   var errorMsg  = document.getElementById('form-error');
@@ -725,23 +1057,16 @@
   var emailInput = document.getElementById('f-email');
   var emailError = document.getElementById('email-error');
 
-  /* ── Phone mask ── */
   phoneInput.addEventListener('input', function () {
     var digits = this.value.replace(/\D/g, '').substring(0, 10);
     var formatted = '';
-    if (digits.length === 0) {
-      formatted = '';
-    } else if (digits.length <= 3) {
-      formatted = '(' + digits;
-    } else if (digits.length <= 6) {
-      formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3);
-    } else {
-      formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6);
-    }
+    if (digits.length === 0) { formatted = ''; }
+    else if (digits.length <= 3) { formatted = '(' + digits; }
+    else if (digits.length <= 6) { formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3); }
+    else { formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6); }
     this.value = formatted;
   });
 
-  /* Backspace gracefully skips formatting characters */
   phoneInput.addEventListener('keydown', function (e) {
     if (e.key === 'Backspace') {
       var pos = this.selectionStart;
@@ -753,105 +1078,44 @@
     }
   });
 
-  /* ── Validation helpers ── */
-  function showError(input, errorEl) {
-    input.classList.add('invalid');
-    input.classList.remove('valid');
-    errorEl.classList.add('visible');
-  }
-  function showValid(input, errorEl) {
-    input.classList.add('valid');
-    input.classList.remove('invalid');
-    errorEl.classList.remove('visible');
-  }
-  function clearState(input, errorEl) {
-    input.classList.remove('invalid', 'valid');
-    errorEl.classList.remove('visible');
-  }
+  function showError(input, errorEl) { input.classList.add('invalid'); input.classList.remove('valid'); errorEl.classList.add('visible'); }
+  function showValid(input, errorEl) { input.classList.add('valid'); input.classList.remove('invalid'); errorEl.classList.remove('visible'); }
+  function clearState(input, errorEl) { input.classList.remove('invalid', 'valid'); errorEl.classList.remove('visible'); }
 
-  /* ── Phone blur validation ── */
   phoneInput.addEventListener('blur', function () {
     var digits = this.value.replace(/\D/g, '');
-    if (this.value === '') {
-      clearState(this, phoneError);
-    } else if (digits.length !== 10) {
-      showError(this, phoneError);
-    } else {
-      showValid(this, phoneError);
-    }
+    if (this.value === '') { clearState(this, phoneError); }
+    else if (digits.length !== 10) { showError(this, phoneError); }
+    else { showValid(this, phoneError); }
   });
-  phoneInput.addEventListener('focus', function () {
-    if (!this.classList.contains('invalid')) clearState(this, phoneError);
-  });
+  phoneInput.addEventListener('focus', function () { if (!this.classList.contains('invalid')) clearState(this, phoneError); });
 
-  /* ── Email blur validation ── */
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   emailInput.addEventListener('blur', function () {
-    if (this.value === '') {
-      clearState(this, emailError);
-    } else if (!emailRegex.test(this.value)) {
-      showError(this, emailError);
-    } else {
-      showValid(this, emailError);
-    }
+    if (this.value === '') { clearState(this, emailError); }
+    else if (!emailRegex.test(this.value)) { showError(this, emailError); }
+    else { showValid(this, emailError); }
   });
-  emailInput.addEventListener('focus', function () {
-    if (!this.classList.contains('invalid')) clearState(this, emailError);
-  });
+  emailInput.addEventListener('focus', function () { if (!this.classList.contains('invalid')) clearState(this, emailError); });
 
-  /* ── Form submission ── */
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-
-    /* Trigger blur validation on phone + email before submitting */
     phoneInput.dispatchEvent(new Event('blur'));
     emailInput.dispatchEvent(new Event('blur'));
-
-    /* Block if either field is invalid or native validation fails */
     var selectField = document.getElementById('f-type');
     var dateInput = document.getElementById('f-date');
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
+    var today = new Date(); today.setHours(0, 0, 0, 0);
     var selectedDate = dateInput.value ? new Date(dateInput.value + 'T00:00:00') : null;
-
-    if (
-      !form.checkValidity() ||
-      phoneInput.classList.contains('invalid') ||
-      emailInput.classList.contains('invalid') ||
-      selectField.value === '' ||
-      (selectedDate && selectedDate < today)
-    ) {
-      if (selectedDate && selectedDate < today) {
-        dateInput.style.borderBottomColor = 'var(--error)';
-      }
-      form.reportValidity();
-      return;
+    if (!form.checkValidity() || phoneInput.classList.contains('invalid') || emailInput.classList.contains('invalid') || selectField.value === '' || (selectedDate && selectedDate < today)) {
+      if (selectedDate && selectedDate < today) { dateInput.style.borderBottomColor = 'var(--error)'; }
+      form.reportValidity(); return;
     }
-
-    submitBtn.textContent = 'Sending…';
-    submitBtn.disabled = true;
-    errorMsg.style.display = 'none';
-
+    submitBtn.textContent = 'Sending…'; submitBtn.disabled = true; errorMsg.style.display = 'none';
     try {
-      var response = await fetch('https://formspree.io/f/mjgppkjd', {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        form.style.display = 'none';
-        successEl.style.display = 'block';
-      } else {
-        var json = await response.json().catch(function () { return {}; });
-        throw new Error((json.errors && json.errors[0] && json.errors[0].message) || 'Server error');
-      }
-    } catch (err) {
-      console.error('Form error:', err);
-      errorMsg.style.display = 'block';
-      submitBtn.textContent = 'Get a Quote';
-      submitBtn.disabled = false;
-    }
+      var response = await fetch('https://formspree.io/f/mjgppkjd', { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (response.ok) { form.style.display = 'none'; successEl.style.display = 'block'; }
+      else { var json = await response.json().catch(function () { return {}; }); throw new Error((json.errors && json.errors[0] && json.errors[0].message) || 'Server error'); }
+    } catch (err) { console.error('Form error:', err); errorMsg.style.display = 'block'; submitBtn.textContent = 'Get a Quote'; submitBtn.disabled = false; }
   });
 
 })();
