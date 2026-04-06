@@ -399,32 +399,63 @@
   .pricing-book-btn:hover { opacity: 0.85; }
 
   /* ── Experience ── */
-  #experience .exp-header {
+  #experience { background: var(--cream); }
+  .exp-header {
     display: flex; justify-content: space-between;
-    align-items: flex-end; gap: 2rem; margin-bottom: 4rem;
+    align-items: flex-end; gap: 2rem; margin-bottom: 5rem;
   }
   .exp-body {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.05rem; font-style: italic;
     color: var(--mid); line-height: 1.85; max-width: 22rem;
   }
-  .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
-  .feature {
-    padding: 2.5rem 1.8rem;
-    background: var(--cream2);
-    border-top: 2px solid transparent;
-    transition: border-color 0.3s, background 0.3s;
+  .journey {
+    position: relative;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0;
   }
-  .feature:hover { border-top-color: var(--accent); background: var(--cream); }
-  .feature-num {
+  .journey-line {
+    position: absolute;
+    top: 2.1rem; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), var(--accent), var(--accent), transparent);
+    z-index: 0;
+  }
+  .journey-step {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 1rem;
+  }
+  .journey-dot-wrap {
+    width: 4.2rem; height: 4.2rem;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.6rem; position: relative;
+  }
+  .journey-dot-ring {
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1px solid rgba(201,185,154,0.3);
+    transition: border-color 0.3s;
+  }
+  .journey-step:hover .journey-dot-ring { border-color: var(--accent); }
+  .journey-dot {
+    width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--cream); border: 1px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .journey-num {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; color: rgba(176,173,166,0.4); margin-bottom: 1.2rem;
+    font-size: 0.75rem; font-weight: 400; color: var(--accent);
   }
-  .feature-title {
+  .journey-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 400; color: var(--dark); margin-bottom: 0.6rem;
+    font-size: 1rem; font-weight: 400;
+    color: var(--dark); margin-bottom: 0.65rem; line-height: 1.3;
   }
-  .feature-desc { font-size: 0.77rem; font-weight: 300; line-height: 1.75; color: var(--mid); }
+  .journey-desc {
+    font-size: 0.74rem; font-weight: 300;
+    line-height: 1.75; color: var(--mid);
+  }
 
   /* ── Testimonial ── */
   #testimonial {
@@ -576,11 +607,14 @@
     #about .inner,
     #contact .inner { grid-template-columns: 1fr; gap: 3rem; }
     .products-grid,
-    .features-grid,
     .pricing-grid,
     .addons-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    #experience .exp-header { flex-direction: column; align-items: flex-start; }
+    .exp-header { flex-direction: column; align-items: flex-start; }
+    .journey { grid-template-columns: 1fr; gap: 2.5rem; }
+    .journey-line { display: none; }
+    .journey-step { align-items: flex-start; text-align: left; flex-direction: row; gap: 1.2rem; padding: 0; }
+    .journey-dot-wrap { flex-shrink: 0; margin-bottom: 0; }
     footer { flex-direction: column; gap: 1.2rem; text-align: center; }
     #sticky-cta { bottom: 1.2rem; right: 1.2rem; }
     .pricing-tabs { width: 100%; }
@@ -883,30 +917,61 @@
     <div class="exp-header">
       <div class="reveal from-left">
         <span class="section-label">The Experience</span>
-        <h2 class="section-heading">Everything you need for<br>an unforgettable moment</h2>
+        <h2 class="section-heading">From booking to gallery,<br>every detail handled</h2>
       </div>
-      <p class="exp-body reveal from-right">We handle every detail so you can focus on enjoying your event. From setup to teardown, we're with you every step of the way.</p>
+      <p class="exp-body reveal from-right">We take care of everything so you can be fully present at your event. Here is exactly what to expect when you book with NORU.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature reveal">
-        <div class="feature-num">01</div>
-        <h3 class="feature-title">Instant Prints</h3>
-        <p class="feature-desc">High-quality prints delivered in seconds. Your guests leave with a tangible keepsake they'll treasure forever.</p>
+    <div class="journey reveal">
+      <div class="journey-line"></div>
+      <div class="journey-step">
+        <div class="journey-dot-wrap">
+          <div class="journey-dot-ring"></div>
+          <div class="journey-dot"><span class="journey-num">01</span></div>
+        </div>
+        <div class="journey-step-text">
+          <h3 class="journey-title">Book Your Date</h3>
+          <p class="journey-desc">Fill out our inquiry form, we confirm your date and walk through your vision together.</p>
+        </div>
       </div>
-      <div class="feature reveal">
-        <div class="feature-num">02</div>
-        <h3 class="feature-title">Custom Overlays</h3>
-        <p class="feature-desc">Bespoke design templates crafted to match your event's theme, palette, and personal style perfectly.</p>
+      <div class="journey-step">
+        <div class="journey-dot-wrap">
+          <div class="journey-dot-ring"></div>
+          <div class="journey-dot"><span class="journey-num">02</span></div>
+        </div>
+        <div class="journey-step-text">
+          <h3 class="journey-title">We Design Your Experience</h3>
+          <p class="journey-desc">Your custom overlay and print template are crafted to match your event's theme perfectly.</p>
+        </div>
       </div>
-      <div class="feature reveal">
-        <div class="feature-num">03</div>
-        <h3 class="feature-title">Digital Sharing</h3>
-        <p class="feature-desc">Instantly share photos via text or email. Every image also lives in your private online gallery.</p>
+      <div class="journey-step">
+        <div class="journey-dot-wrap">
+          <div class="journey-dot-ring"></div>
+          <div class="journey-dot"><span class="journey-num">03</span></div>
+        </div>
+        <div class="journey-step-text">
+          <h3 class="journey-title">Day of Setup</h3>
+          <p class="journey-desc">We arrive early, set everything up, and have the booth ready before your first guest walks in.</p>
+        </div>
       </div>
-      <div class="feature reveal">
-        <div class="feature-num">04</div>
-        <h3 class="feature-title">Full Support</h3>
-        <p class="feature-desc">We handle setup, on-site assistance, and complete teardown — seamless from start to finish.</p>
+      <div class="journey-step">
+        <div class="journey-dot-wrap">
+          <div class="journey-dot-ring"></div>
+          <div class="journey-dot"><span class="journey-num">04</span></div>
+        </div>
+        <div class="journey-step-text">
+          <h3 class="journey-title">Live &amp; Unforgettable</h3>
+          <p class="journey-desc">Guests step up, strike a pose, and walk away with prints or instant digital shares in hand.</p>
+        </div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-dot-wrap">
+          <div class="journey-dot-ring"></div>
+          <div class="journey-dot"><span class="journey-num">05</span></div>
+        </div>
+        <div class="journey-step-text">
+          <h3 class="journey-title">Your Gallery Delivered</h3>
+          <p class="journey-desc">Within 24 hours your full online gallery is live, ready to share and relive for 180 days.</p>
+        </div>
       </div>
     </div>
   </div>
