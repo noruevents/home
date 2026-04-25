@@ -44,27 +44,39 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.4rem 4rem;
-    background: rgba(250,248,244,0.92);
+    /*background: rgba(250,248,244,0.92);*/
+    background: #1A1916;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(176,173,166,0.15);
   }
   .nav-logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1rem; letter-spacing: 0.08em; color: var(--dark);
+    font-size: 1rem; letter-spacing: 0.08em; color: var(--light);
   }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
     font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--mid); text-decoration: none; transition: color 0.3s;
   }
-  .nav-links a:hover { color: var(--dark); }
+  .nav-links a:hover { color: var(--light); }
   .nav-btn {
-    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--dark); border: 1px solid var(--dark);
-    padding: 0.6rem 1.4rem; background: none; cursor: pointer;
-    transition: all 0.3s; font-family: 'Jost', sans-serif;
-  }
-  .nav-btn:hover { background: var(--dark); color: var(--cream); }
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light);
+  border: 1px solid var(--light);
+  padding: 0.6rem 1.4rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Jost', sans-serif;
+}
+
+.nav-btn:hover {
+  background: var(--light);
+  color: #1A1916;
+  border-color: var(--light);
+}
 
   /* ── Hero ── */
   #hero {
